@@ -1,0 +1,18 @@
+[package]
+name = "idos_cli"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+clap = { version = "4.5.3", features = ["env", "derive"] }
+clap_complete = "4.5.1"
+env_logger = { workspace = true }
+idos-runtime.workspace = true
+log = { workspace = true }
+tokio = { workspace = true, features = ["full"] }
+tracing = { workspace = true }
+

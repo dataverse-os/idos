@@ -1,0 +1,4 @@
+CREATE TABLE statistics (
+  date TIMESTAMPTZ PRIMARY KEY,
+  data JSONB NOT NULL
+)

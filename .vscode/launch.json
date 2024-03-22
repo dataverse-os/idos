@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "dataverse node",
+      "cargo": {
+        "args": ["build", "--package", "dataverse-node"]
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "RUST_LOG": "INFO"
+      }
+    }
+  ]
+}
