@@ -11,8 +11,10 @@ async-trait = { workspace = true }
 clap = { version = "4.5.3", features = ["env", "derive"] }
 clap_complete = "4.5.1"
 env_logger = { workspace = true }
+futures.workspace = true
 idos-runtime.workspace = true
 log = { workspace = true }
 tokio = { workspace = true, features = ["full"] }
-tracing = { workspace = true }
+tracing.workspace = true
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 

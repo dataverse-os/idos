@@ -1,14 +1,18 @@
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 
-use crate::{commands::config::*, GlobalArguments};
+use self::{config::*, daemon::*, project::*};
+use crate::GlobalArguments;
 
 mod config;
 mod daemon;
+mod project;
 
 #[derive(Subcommand)]
 enum Commands {
-    Config(InitConfigArgs),
+    Config(ConfigCommandsArgs),
+    Daemon(DaemonCommandsArgs),
+    Build(ProjectCommandsArgs),
 }
 
 #[derive(Parser)]
@@ -17,13 +21,8 @@ struct Cli {
     /// Optional name to operate on
     name: Option<String>,
 
-    /// Sets a custom config file
-    #[arg(short, long, value_name = "FILE")]
-    config: Option<PathBuf>,
-
-    /// Turn debugging information on
-    #[arg(short, long, default_value = "false")]
-    debug: bool,
+    #[clap(flatten)]
+    global_params: GlobalArguments,
 
     #[command(subcommand)]
     command: Option<Commands>,
@@ -42,6 +41,14 @@ struct GlobalOptions {
 
 pub async fn cli() -> anyhow::Result<()> {
     let cli = Cli::parse();
+
+    if let Some(cmd) = &cli.command {
+        match cmd {
+            Commands::Config(args) => ConfigCommandsArgs::handle(&cli.global_params, &args).await?,
+            Commands::Daemon(args) => DaemonCommandsArgs::handle(&cli.global_params, &args).await?,
+            Commands::Build(args) => ProjectCommandsArgs::handle(&cli.global_params, &args).await?,
+        }
+    }
 
     Ok(())
 }

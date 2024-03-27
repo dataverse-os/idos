@@ -1,20 +1,23 @@
-use async_trait::async_trait;
-use clap::{Args, Subcommand};
-
 use crate::{CommandLineHandler, GlobalArguments};
 
+use super::Cli;
+
 #[derive(Debug, Args)]
-#[command(name = "config", about = "config related commands")]
+#[command(name = "project", about = "build related commands")]
 #[command(args_conflicts_with_subcommands = true)]
-pub struct ConfigCommandsArgs {
+pub(crate) struct ProjectCommandsArgs {
     #[command(subcommand)]
     command: Commands,
 }
 
-impl ConfigCommandsArgs {
-    pub async fn handle(global: &GlobalArguments, args: &ConfigCommandsArgs) -> anyhow::Result<()> {
+impl ProjectCommandsArgs {
+    pub async fn handle(
+        global: &GlobalArguments,
+        args: &ProjectCommandsArgs,
+    ) -> anyhow::Result<()> {
         // match &args.command {
-        //     Commands::Init(args) => InitConfig::handle(global, args).await,
+        //     Commands::New(args) => NewProject::handle(global, args).await,
+        //     Commands::Build(args) => BuildProject::handle(global, args).await,
         // }
         Ok(())
     }
@@ -22,19 +25,21 @@ impl ConfigCommandsArgs {
 
 #[derive(Debug, Subcommand)]
 pub(crate) enum Commands {
-    Init(InitConfigArgs),
+    New(NewProjectArgs),
+    Build(BuildProjectArgs),
 }
 
 #[derive(Debug, Args)]
-#[command(about = "Arguments to initialize a new empty config file")]
-pub(crate) struct InitConfigArgs {}
+#[command(about = "Arguments to create a new project")]
+pub(crate) struct NewProjectArgs {
+    #[arg(short, long, value_name = "FILE")]
+    pub name: String,
+}
 
-/// The command to initialize a new config template in a specific path
-pub(crate) struct InitConfig;
+struct NewProject;
 
-#[async_trait]
-impl CommandLineHandler for InitConfig {
-    type Arguments = InitConfigArgs;
+impl CommandLineHandler for NewProject {
+    type Arguments = NewProjectArgs;
 
     async fn handle(global: &GlobalArguments, _arguments: &Self::Arguments) -> anyhow::Result<()> {
         let path = global.config_path();
@@ -58,4 +63,11 @@ impl CommandLineHandler for InitConfig {
 
         Ok(())
     }
+}
+
+#[derive(Debug, Args)]
+#[command(about = "Arguments to build a project")]
+pub(crate) struct BuildProjectArgs {
+    #[arg(short, long, value_name = "FILE")]
+    pub file: Option<String>,
 }

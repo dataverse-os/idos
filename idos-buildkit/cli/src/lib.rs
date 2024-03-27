@@ -1,6 +1,11 @@
-mod commands;
+#[macro_use]
+extern crate async_trait;
+#[macro_use]
+extern crate tracing;
+#[macro_use]
+extern crate clap;
 
-use async_trait::async_trait;
+mod commands;
 use clap::Args;
 pub use commands::*;
 
@@ -26,6 +31,10 @@ pub struct GlobalArguments {
         env = "IDOS_CLI_CONFIG_PATH"
     )]
     config_path: Option<String>,
+
+    /// Turn debugging information on
+    #[arg(short, long, default_value = "false")]
+    debug: bool,
 }
 
 impl GlobalArguments {

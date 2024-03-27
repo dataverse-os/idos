@@ -4912,10 +4912,12 @@ dependencies = [
  "clap",
  "clap_complete",
  "env_logger",
+ "futures",
  "idos-runtime",
  "log 0.4.21",
  "tokio",
  "tracing",
+ "tracing-subscriber 0.3.18",
 ]
 
 [[package]]
