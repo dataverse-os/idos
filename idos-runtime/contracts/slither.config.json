@@ -1,0 +1,10 @@
+{
+    "detectors_to_exclude": "arbitrary-send-erc20",
+    "exclude_informational": false,
+    "exclude_low": false,
+    "exclude_medium": false,
+    "exclude_high": false,
+    "disable_color": false,
+    "filter_paths": "(lib/|node_modules/|script/|contracts/mocks/|contracts/upgradeability|test/)",
+    "legacy_ast": false
+}

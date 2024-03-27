@@ -1,3 +1,4 @@
 [submodule "idos-runtime/contracts/dataverse"]
 	path = idos-runtime/contracts/dataverse
 	url = https://github.com/dataverse-os/dataverse-contracts.git
+
