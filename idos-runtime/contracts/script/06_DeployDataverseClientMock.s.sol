@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import {DataverseClientMock} from "../../test/extension/mocks/DataverseClientMock.sol";
+import {DataverseClientMock} from "../test/mocks/DataverseClientMock.sol";
 import "forge-std/Script.sol";
 
 contract DeployDataverseClientMock is Script {
