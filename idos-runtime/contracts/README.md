@@ -6,7 +6,7 @@
 </p >
 <br/>
 
-# dataverse-contracts
+# idos-contracts
 
 **⚠️ Warning: This Smart Contract has not been professionally audited.**
 
@@ -25,85 +25,43 @@ Install dependencies:
 
 ```
 forge install
+npm install
 ```
 
 ## Compile
 
 ```
-forge build
+npm run build
 ```
 
 ## Test
 
 ```
-forge test
+npm run test
 ```
 
 Test the code with logs and traces:
 
 ```
-forge test -vvvv
+npm run test -vvvv
 ```
 
 ## Deploy
-
-Anvil is a local testnet node that comes with Foundry. You can use it to test your contracts from frontends or to interact over RPC. Here, we deploy contracts to the local chain Anvil as an example.
-
-### 1. Start Anvil
+### 1. Set .env
+Please add a new file named `.env` and configure your environment as `.env.example` showed.
 
 ```
-anvil
-```
-
-The service will then be listening on `127.0.0.1:8545`.
-
-### 2. Set .env
-
-Please add a new file named .env and configure your environment as `.env.example` showed.
-
-```
-ANVIL_RPC_URL=
+POLYGON_MUMBAI_RPC_URL=
+BSC_TESTNET_RPC_URL=
 PRIVATE_KEY=
 ```
 
-`PRIVATE_KEY` could be copied from Anvil's shell dashboard.
-
-Then source `.env` in shell:
-
-```
-source .env
-```
-
-## 3.Deploy
-
-Please add a new file named `.env` and configure your environment as `.env.example` showed.
-
+### 2. Deploy script
 ```
 npm run deploy:polygon_mumbai
 npm run deploy:bsc_testnet
 ```
 
-## 4.Deployed Contract Address
-
+## 3.Deployed Contract Address
 The contract addresses deployed on different blockchain networks are listed in the `addresses.json` file.
 
-### Deployed Contract Address
-
-```json
-{
-  "Mumbai": {
-    "GlobalConfig": "0x1d5122b2293Edb9bbCc03F55da110588cEAf657b",
-    "DappTableRegistry": "0xAf0a7C64ecEB3525390e4A7289189c8B06051DB5",
-    "DataUnion": {
-      "DataUnion": "0x2AE67993019275E140fa01B47e6f32d1AecFF1ca",
-      "LitACL": "0xa420D0Fee98b242e494A15D6143e068c1D16b72C",
-
-      "BlockSubscribeModule": "0x20b591ed9Ce58013B7765Ea5Cc8Df943B78f2DaC",
-      "TimeSegmentSubscribeModule": "0x78BeEc5D57eB43F14D91645AB817644BeF7acCa3"
-    },
-  },
-  "BSCT": {},
-  "Polygon": {},
-  "BSC": {},
-}
-```
