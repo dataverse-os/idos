@@ -13,3 +13,4 @@ serde = { workspace = true }
 
 [build-dependencies]
 ethers = { workspace = true, features = ["abigen", "ws"] }
+serde_json.workspace = true

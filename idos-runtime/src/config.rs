@@ -1,6 +1,6 @@
 mod datasource;
 
-use crate::{bonsai::BonsaiConfig, extension::ContractConfig};
+use crate::bonsai::BonsaiConfig;
 use anyhow::Context;
 use datasource::*;
 use directories::ProjectDirs;
@@ -15,7 +15,7 @@ pub struct Config {
     pub datasources: Vec<DataSource>,
 
     pub bonsai: BonsaiConfig,
-    pub contract: ContractConfig,
+    pub contract: idos_contracts::Config,
 }
 
 #[derive(Debug, Clone, Default, Deserialize, Serialize)]

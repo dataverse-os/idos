@@ -43,6 +43,7 @@ futures = "0.3.15"
 hex = "0.4.3"
 idos-computa = { path = "./idos-computa" }
 idos-runtime = { path = "./idos-runtime" }
+idos-contracts = { path = "./idos-runtime/contracts" }
 idos-datasource = { path = "./idos-datasource" }
 idos-types = { path = "./idos-computa/types" }
 log = "0.4.20"

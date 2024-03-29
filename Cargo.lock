@@ -4815,6 +4815,7 @@ dependencies = [
  "anyhow",
  "ethers",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
