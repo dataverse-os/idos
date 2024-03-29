@@ -1,3 +1,9 @@
 target
 .DS_Store
 .env
+node_modules
+out
+cache
+/broadcast
+pnpm-lock.yaml
+bun.lockb

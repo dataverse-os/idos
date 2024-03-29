@@ -1,5 +1,4 @@
 use crate::config::Config;
-use crate::extension::ContractConfig;
 use bonsai::SessionId;
 use bonsai_sdk::alpha as bonsai;
 use bonsai_sdk::alpha_async as bonsai_async;
@@ -16,7 +15,7 @@ pub struct BonsaiConfig {
 
 pub struct Client {
     pub config: BonsaiConfig,
-    pub contract_config: ContractConfig,
+    pub contract_config: idos_contracts::Config,
     client: bonsai::Client,
 }
 

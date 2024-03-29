@@ -1,3 +1,3 @@
-[submodule "idos-runtime/contracts/dataverse"]
-	path = idos-runtime/contracts/dataverse
-	url = https://github.com/dataverse-os/dataverse-contracts.git
+[submodule "idos-runtime/contracts/lib/forge-std"]
+	path = idos-runtime/contracts/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

@@ -1,5 +1,4 @@
 mod contract;
-mod default;
 
 use crate::{bonsai, load_query_payload};
 use bonsai_sdk::alpha::SessionId;
@@ -13,12 +12,12 @@ use risc0_zkvm::sha::Digest;
 use std::sync::Arc;
 
 pub struct Client {
-    cfg: ContractConfig,
+    cfg: idos_contracts::Config,
     client: Arc<SignerMiddleware<Provider<Ws>, Wallet<k256::ecdsa::SigningKey>>>,
 }
 
 impl Client {
-    pub async fn new(cfg: &ContractConfig) -> anyhow::Result<Self> {
+    pub async fn new(cfg: &idos_contracts::Config) -> anyhow::Result<Self> {
         let provider = Provider::<Ws>::connect(&cfg.rpc_url).await?;
         let chain_id = provider.get_chainid().await?.as_u64();
         let signer = cfg.key.parse::<LocalWallet>()?.with_chain_id(chain_id);

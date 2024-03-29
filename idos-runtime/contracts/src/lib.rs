@@ -1,8 +1,9 @@
+include!(concat!(env!("OUT_DIR"), "/addresses.rs"));
+
 #[macro_use]
 extern crate serde;
 
 mod config;
-mod default;
 
 pub use config::Config;
 use ethers::prelude::*;
